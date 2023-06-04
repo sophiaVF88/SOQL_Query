@@ -1,0 +1,35 @@
+<!-- sldsValidatorIgnore -->
+<!-- sldsValidatorIgnore -->
+<template>
+    <lightning-card>
+        <div if:true={isLoading}>
+            <lightning-spinner variant="brand" alternative-text="Processing"></lightning-spinner>
+        </div>
+<select onchange={selectObject}>
+    <option>Select an Object</option>
+    <template for:each={objectOptions} for:item="option">
+    <option key={option.value} value={option.value}>{option.label}</option> 
+    </template>
+</select>
+    <p><text font="Arial" size="12pt">Selected object: {objectName}</text></p>
+    <br>
+
+    <select onchange={selectFields} multiple>
+        <option>Select a field</option>
+        <template for:each={fieldOptions} for:item="option">
+        <option key={option.value} value={option.value}>{option.label}</option> 
+        </template>
+    </select>
+        <p><text font="Arial" size="12pt">Selected fields: {selectedFields}</text></p>
+        <lightning-input class="query" label="Your SOQL Query" value={query}></lightning-input>  
+    <lightning-button label="Submit" variant="brand" onclick={submitQuery}></lightning-button>
+        <p><text font="Calibri" size="12pt">{records}</text></p>  
+        <lightning-datatable
+            key-field="Id"
+            data={queryRecords}
+            columns={columns}
+            if:true={queryRecords}> 
+    </lightning-datatable> 
+</lightning-card>
+</template>
+
