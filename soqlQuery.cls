@@ -74,7 +74,9 @@ public without sharing class soqlQuery {
         system.debug(result);
         return result;
     }
-   
+    
+   //Create a variable to filter objects returned from the query
+    
     private static boolean isWantedObject(Schema.DescribeSObjectResult result)
     {
         Boolean hasNoPrefix = String.isBlank(result.getKeyPrefix());
